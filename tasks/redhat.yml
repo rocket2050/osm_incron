@@ -1,6 +1,6 @@
 ---
 - name: Install incron in Centos
-  yum: name={{ item }} state=present
+  yum: name={{ item }} state=present  update=cache
   with_items:
     - epel-release
     - incron
