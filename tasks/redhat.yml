@@ -1,9 +1,12 @@
 ---
+- name: Add epel in Centos
+  yum: name=epel-release state=present
+
+- name: Updating cache ...
+  yum: name=* state=latest
+
 - name: Install incron in Centos
-  yum: name={{ item }} state=present  update=cache
-  with_items:
-    - epel-release
-    - incron
+  yum: name=incron state=present
 
 - name: Ensure Incron is running and enabled as configured.
   service:
@@ -11,7 +14,6 @@
     state: started
     enabled: yes
   when: incron_enabled
-#  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 - name: Ensure Incron is stopped and disabled as configured.
   service:
