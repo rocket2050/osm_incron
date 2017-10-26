@@ -1,0 +1,22 @@
+---
+- name: Install incron in Centos
+  yum: name={{ item }} state=present
+  with_items:
+    - epel-release
+    - incron
+
+- name: Ensure Incron is running and enabled as configured.
+  service:
+    name: "{{ incron_daemond }}"
+    state: started
+    enabled: yes
+  when: incron_enabled
+#  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Ensure Incron is stopped and disabled as configured.
+  service:
+    name: "{{ incron_daemond }}"
+    state: stopped
+    enabled: no
+  when: not incron_enabled
+

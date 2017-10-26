@@ -1,0 +1,15 @@
+---
+
+- lineinfile:
+    dest: /etc/incron.allow
+    line: "{{ incron_user }}"
+
+- name: Setup incron.d scripts
+  template:
+    src: incrontab.j2
+    dest: "{{ incron_system_tables_dir }}{{ item.name }}"
+  with_items: "{{ incron_system_tables }}"
+  when: incron_system_tables is defined
+  notify:
+   - restart incron
+   - restart incrond
