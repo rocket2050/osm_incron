@@ -6,7 +6,10 @@
   yum: name=* state=latest
 
 - name: Install incron in Centos
-  yum: name=incron state=present
+  yum: name={{ item }} state=present
+  with_items:
+      - libselinux-python
+      - incron
 
 - name: Check that the /etc/incron.allow file exists
   stat:
