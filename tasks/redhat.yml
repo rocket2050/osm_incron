@@ -7,7 +7,6 @@
 
 - name: Install incron in Centos
   yum: name=incron state=present
-<<<<<<< HEAD
 
 - name: Check that the /etc/incron.allow file exists
   stat:
@@ -19,8 +18,6 @@
     path: /etc/incron.allow
     state: touch
   when: stat_result.stat.exists == False 
-=======
->>>>>>> a5897f45799d4ee4b73c4e670636b44eb46dce11
 
 - name: Ensure Incron is running and enabled as configured.
   service:
