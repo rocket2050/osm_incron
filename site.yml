@@ -4,9 +4,9 @@
 #  become: true
 
   roles:
-   - role: incron
+   - role: osm_incron
      incron_system_tables:
        - name: incron_test
          path: /home/vagrant/incron_test
-         mask: IN_CREATE 
+         mask: IN_MODIFY
          command: touch /home/newfile
