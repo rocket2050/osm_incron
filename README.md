@@ -7,26 +7,25 @@ Incron works similar way as the regular cron. The difference is that the inotify
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+There are no any special requirments in Debian Family and in RedHat Family [libselinux-pyhton](ftp://195.220.108.108/linux/fedora-secondary/updates/testing/27/aarch64/l/libselinux-python-2.7-2.fc27.aarch64.rpm) package should be installed.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+A description of the settable variables for this role should go here, including any variables that are in [defaults](https://github.com/opstree-ansible/osm_incron/blob/master/defaults/main.yml), [vars](https://github.com/opstree-ansible/osm_incron/blob/master/vars/main.yml), and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
 Dependencies
 ------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+There are no any futher dependecies for this role.
 
 Example Playbook
 -------------------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: "{{ hosts }}"
       roles:
-         - { role: username.rolename, x: 42 }
+         - osm_incron
 
 License
 -------
