@@ -10,6 +10,11 @@
     dest: "{{ incron_system_tables_dir }}{{ item.name }}"
   with_items: "{{ incron_system_tables }}"
   when: incron_system_tables is defined
-  notify:
-   - restart incron
-   - restart incrond
+
+- name: Restarting incron
+  service: name=incron state=restarted
+  when: ansible_os_family == "Debian"
+
+- name: Restarting incron
+  service: name=incrond state=restarted
+  when: ansible_os_family == "RedHat"
