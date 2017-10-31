@@ -1,9 +1,9 @@
 ---
 # handlers file for incron
 - name: restart incron
-  service: "name={{ incron_daemon }} state=restarted"
-  when: incron_enabled
+  service: name=incon  state=restarted
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: restart incrond
-  service: "name={{ incron_daemond }} state=restarted"
-  when: incron_enabled
+  service: name=incrond state=restarted
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

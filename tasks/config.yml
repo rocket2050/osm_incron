@@ -1,4 +1,14 @@
 ---
+- name: Check that the /etc/incron.allow file exists
+  stat:
+    path: /etc/incron.allow
+  register: stat_result
+
+- name: Create the file, if it doesnt exist already
+  file:
+    path: /etc/incron.allow
+    state: touch
+  when: stat_result.stat.exists == False
 
 - lineinfile:
     dest: /etc/incron.allow
