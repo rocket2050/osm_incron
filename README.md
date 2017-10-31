@@ -27,6 +27,16 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: "{{ hosts }}"
       roles:
          - osm_incron
+         
+    - hosts: incron_server
+ -hosts: '{{ hosts }}
+  roles:
+   - role: osm_incron
+     incron_system_tables:
+       - name: incron_test
+         path: /home/vagrant/incron_test1 // this is a variable which needs to be change as per our requirement.
+         mask: IN_MODIFY  // this can be anything like IN_CREATE ,IN_ACCESS etc
+         command: touch /home/newfile     // this is a variable where we mention what command has to be run if the given speified condition  is met
 
 License
 -------
